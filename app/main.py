@@ -2,7 +2,6 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
-from app.tasks import add_numbers
 from app.relation import relation
 
 logging.basicConfig(level=logging.INFO)
