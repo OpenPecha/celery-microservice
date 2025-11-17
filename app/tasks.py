@@ -134,6 +134,7 @@ def _update_root_job_count(job_id):
         if root.completed_segments >= root.total_segments:
             root.status = "COMPLETED"
             root.updated_at = datetime.now(timezone.utc)
+            logger.info(f"Sending message to completed queue for job {job_id}")
             sqs_client.send_message(
                 QueueUrl=get('SQS_COMPLETED_QUEUE_URL'),
                 MessageBody=json.dumps({
